@@ -1,0 +1,16 @@
+CC     := gcc
+CFLAGS := -Wall -Wextra -O2
+
+PROGS := prog1 prog2 prog3
+
+all: $(PROGS)
+
+# "prog1" depends on "prog1.c", etc.
+$(PROGS): %: %.c
+	$(CC) $(CFLAGS) $< -o $@
+
+clean:
+	rm -f $(PROGS)
+
+.PHONY: all clean
+
